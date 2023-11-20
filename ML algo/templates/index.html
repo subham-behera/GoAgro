@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <h1>Input Form</h1>
+    <form id="predictionForm">
+        <!-- Your input fields go here -->
+        <label for="N">N:</label>
+        <input type="number" id="N" name="N" required><br>
+        <br>
+        <label for="P">P:</label>
+        <input type="number" id="P" name="P" required><br>
+        <br>
+        <label for="K">K:</label>
+        <input type="number" id="K" name="K" required><br>
+        <br>
+        <label for="temperature">Temperature:</label>
+        <input type="number" id="temperature" name="temperature" required><br>
+        <br>
+        <label for="humidity">Humidity:</label>
+        <input type="number" id="humidity" name="humidity" required><br>
+        <br>
+        <label for="ph">pH:</label>
+        <input type="number" id="ph" name="ph" required><br>
+        <br>
+        <label for="rainfall">Rainfall:</label>
+        <input type="number" id="rainfall" name="rainfall" required><br>
+        <br>
+
+        <button type="button" onclick="getPrediction()">Get Prediction</button>
+    </form>
+
+    <div id="predictionResultBox">
+        <p id="predictionResult">#result#</p>
+    </div>
+
+    <script>
+        function getPrediction() {
+            // Collect input data from the form
+            var input_data = {
+                'N': parseFloat($('#N').val()),
+                'P': parseFloat($('#P').val()),
+                'K': parseFloat($('#K').val()),
+                'temperature': parseFloat($('#temperature').val()),
+                'humidity': parseFloat($('#humidity').val()),
+                'ph': parseFloat($('#ph').val()),
+                'rainfall': parseFloat($('#rainfall').val())
+            };
+
+            // Make a POST request to the Flask API
+            $.ajax({
+                type: 'POST',
+                url: '/api',
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify({'input_data': input_data}),
+                success: function (response) {
+                    // Display the prediction result
+                    $('#predictionResult').text('Prediction: ' + response.prediction[0]);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

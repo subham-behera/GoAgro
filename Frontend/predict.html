@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 450px;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-group-half {
+            width: 48%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding-right: 5px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+    <title>Plant Prediction</title>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Predict Your Crops</h2>
+
+        <div class="input-group">
+            <div class="input-group-half">
+                <label for="nitrogen">Nitrogen</label>
+                <input type="text" id="nitrogen" placeholder="Enter nitrogen level">
+            </div>
+            <div class="input-group-half">
+                <label for="phosphorus">Phosphorus</label>
+                <input type="text" id="phosphorus" placeholder="Enter phosphorus level">
+            </div>
+            <div class="input-group-half">
+                <label for="potassium">Potassium</label>
+                <input type="text" id="potassium" placeholder="Enter potassium level">
+            </div>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-half">
+                <label for="temperature">Temperature</label>
+                <input type="text" id="temperature" placeholder="Enter temperature">
+            </div>
+            <div class="input-group-half">
+                <label for="humidity">Humidity</label>
+                <input type="text" id="humidity" placeholder="Enter humidity">
+            </div>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-half">
+                <label for="phLevel">pH Level</label>
+                <input type="text" id="phLevel" placeholder="Enter pH level">
+            </div>
+            <div class="input-group-half">
+                <label for="rainfall">Rainfall</label>
+                <input type="text" id="rainfall" placeholder="Enter rainfall">
+            </div>
+        </div>
+
+        <button onclick="predict()">Predict</button>
+
+        <div class="result" id="result">
+            <h3>Prediction Result</h3>
+            <p id="predictionResult"></p>
+        </div>
+    </div>
+
+    <script>
+        function predict() {
+            // Add your prediction logic here
+            // For demonstration, just displaying a generic result
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('predictionResult').innerHTML = 'Predicted result: Healthy plant';
+        }
+    </script>
+</body>
+</html>
